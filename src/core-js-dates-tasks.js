@@ -46,13 +46,18 @@ function getTime(date) {
  * '03 Dec 1995 00:12:00 UTC' => 'Sunday'
  * '2024-01-30T00:00:00.000Z' => 'Tuesday'
  */
-function getDayName(/* date */) {
-  throw new Error('Not implemented');
-  // const dateNow = new Date(date);
-  // const format = new Intl.DateTimeFormat('en-US', { weekday: 'long' });
-  // const res = format.format(dateNow);
-  // return res;
-  // console.log(res);
+function getDayName(date) {
+  const week = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  const newDate = new Date(date);
+  return week[newDate.getUTCDay()];
 }
 
 /**
@@ -211,8 +216,8 @@ function getNextFridayThe13th(/* date */) {
  * Date(2024, 5, 1) => 2
  * Date(2024, 10, 10) => 4
  */
-function getQuarter(/* date */) {
-  throw new Error('Not implemented');
+function getQuarter(date) {
+  return Math.floor(date.getMonth() / 3) + 1;
 }
 
 /**
@@ -249,8 +254,8 @@ function getWorkSchedule(/* period, countWorkDays, countOffDays */) {
  * Date(2022, 2, 1) => false
  * Date(2020, 2, 1) => true
  */
-function isLeapYear(/* date */) {
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  return new Date(new Date(date).getFullYear(), 2, 0).getDate() === 29;
 }
 
 module.exports = {
